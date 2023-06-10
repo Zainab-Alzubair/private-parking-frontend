@@ -11,7 +11,7 @@ const Sidebar = () => {
           <a className="nav-link" href="/manage-working-hour">Manage Working Hours</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#manage-slots">Manage Slots</a>
+          <a className="nav-link" href="/manage-slots">Manage Slots</a>
         </li>
         <li className="nav-item">
           <a className="nav-link" href="#manage-reservations">Manage Reservations</a>
