@@ -7,6 +7,7 @@ import UserDashboard from './components/UserDashboard';
 import Dashboard from './components/Dashboard';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ManageWorkingHour from './components/admin-pages/ManageWorkingHour'
 const App = () => {
   const [authenticated, setAuthenticated] = useState(false);
   const [role, setRole] = useState('');
@@ -55,6 +56,7 @@ const App = () => {
         <Route path="/dashboard" element={<Dashboard role={role} />} />
         <Route path="/admin-dashboard" element={<AdminDashboard />} />
         <Route path="/user-dashboard" element={<UserDashboard />} />
+        <Route path="/manage-working-hour" element={<ManageWorkingHour />} />
         <Route
           exact
           path="/"

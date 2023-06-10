@@ -1,0 +1,29 @@
+.sidebar-container {
+  height: 100vh; /* Full-page height */
+  width: 20%; /* 20% width */
+  background-color: #9fc1e2; /* Sidebar background color */
+  padding: 20px; /* Optional padding */
+}
+
+/* Optional styles for the navigation links */
+.nav-link {
+  color: #212529;
+  text-decoration: none;
+
+  margin-top: 5rem;
+  background-color: rgb(77, 221, 173);
+}
+
+.nav-link:hover {
+  color: #007bff;
+}
+
+.admin-container {
+  display: flex;
+
+}
+
+.title {
+
+  margin: 2rem auto;
+}
