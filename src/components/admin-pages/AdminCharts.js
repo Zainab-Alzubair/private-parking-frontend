@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Chart from 'react-apexcharts';
+import './AdminCharts.css';
 
 const AdminCharts = () => {
   const [userData, setUserData] = useState(null);
@@ -19,9 +20,14 @@ const AdminCharts = () => {
       setUserData({
         options: {
           labels: ['Total Users', 'Remaining Users'],
-          colors: ['#36A2EB', '#FF6384']
+          colors: ['#04ff00', '#0D6EFD'],
+          dataLabels: {
+            style: {
+              colors: ['#fff'],
+            },
+          },
         },
-        series: [totalUsers, 100 - totalUsers]
+        series: [totalUsers, 100 - totalUsers],
       });
     } catch (error) {
       console.error('API Error:', error);
@@ -36,9 +42,15 @@ const AdminCharts = () => {
       setSlotData({
         options: {
           labels: ['Total Slots', 'Remaining Slots'],
-          colors: ['#FFCE56', '#FF6384']
+          
+          colors: ['#0D6EFD', '#BFFD9E'],
+          dataLabels: {
+            style: {
+              colors: ['#fff'],
+            },
+          },
         },
-        series: [totalSlots, 100 - totalSlots]
+        series: [totalSlots, 100 - totalSlots],
       });
     } catch (error) {
       console.error('API Error:', error);
@@ -46,10 +58,9 @@ const AdminCharts = () => {
   };
 
   return (
-    <div style={{ display: 'flex' }}>
+    <div className="admin-charts-container">
       {userData && (
-        <div style={{ marginRight: '20px' }}>
-          <h2>Total Users</h2>
+        <div className="chart-container">
           <Chart
             options={userData.options}
             series={userData.series}
@@ -59,8 +70,7 @@ const AdminCharts = () => {
         </div>
       )}
       {slotData && (
-        <div>
-          <h2>Total Slots</h2>
+        <div className="chart-container">
           <Chart
             options={slotData.options}
             series={slotData.series}

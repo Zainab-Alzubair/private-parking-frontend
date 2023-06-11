@@ -31,6 +31,9 @@ const Sidebar = () => {
     <div className="sidebar-container">
       {/* Sidebar content */}
       <ul className="nav flex-column">
+      <li className="l-title">
+         <h3>Private Parking</h3>
+        </li>
         <li className="nav-item">
           <a className="nav-link" href="/admin-dashboard">Home</a>
         </li>
@@ -47,7 +50,7 @@ const Sidebar = () => {
           <a className="nav-link" href="/manage-customers">Manage Customers</a>
         </li>
       </ul>
-      <Button variant="primary" onClick={handleLogout}>
+      <Button className="logout" variant="primary" onClick={handleLogout}>
         Logout
       </Button>
     </div>

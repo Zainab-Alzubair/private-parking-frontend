@@ -162,7 +162,6 @@ const Reservation = () => {
           </select>
         </div>
       </div>
-
       <div className="row">
         {filteredSlots.map((slot) => (
           <div className="col-md-4" key={slot.id}>
@@ -171,7 +170,7 @@ const Reservation = () => {
                 <Card.Title>Time: {slot.time}</Card.Title>
                 <Card.Text>
                   
-               {slot.is_available ? 'Available' : (slot.availability_start_time && slot.availability_end_time) ? `Not Available from ${slot.availability_start_time.slice(11, 16)} to ${slot.availability_end_time.slice(11, 16)}` : ''}
+              {slot.is_available ? 'Available' : (slot.availability_start_time && slot.availability_end_time) ? `Not Available from ${slot.availability_start_time.slice(11, 16)} to ${slot.availability_end_time.slice(11, 16)}` : ''}
   <br />
                   <br />
                   Price: {slot.price}

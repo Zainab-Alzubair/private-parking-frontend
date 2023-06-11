@@ -1,14 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import './user.css'
 const SignupForm = () => {
   const [name, setName] = useState('');
+  const [surname, setSurName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
+  useEffect(() => {
+    // Add the body background class when the component mounts
+    document.body.classList.add('body-background');
+
+    // Remove the body background class when the component unmounts
+    return () => {
+      document.body.classList.remove('body-background');
+    };
+  }, []);
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -21,6 +32,7 @@ const SignupForm = () => {
         body: JSON.stringify({
           user: {
             name,
+            surname,
             email,
             password,
           },
@@ -45,14 +57,22 @@ const SignupForm = () => {
   };
 
   return (
-    <div>
-      <h2>Sign Up</h2>
+    <div className='container-wrap '>
+      <h1 className='welcome-title'>Welcome to your Private Parking</h1>
+    <div className='container-form'>
       <form onSubmit={handleSubmit}>
         <input
           type="name"
           placeholder="Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
+          required
+        />
+          <input
+          type="name"
+          placeholder="Last Name"
+          value={surname}
+          onChange={(e) => setSurName(e.target.value)}
           required
         />
         <input
@@ -71,7 +91,15 @@ const SignupForm = () => {
         />
         <button type="submit">Sign Up</button>
       </form>
-    </div>
+      <div className="title">
+          <p className="add-new">Already have an account? </p>
+          <p   className='login-btn'type="button"  onClick={() => navigate('/login')}>
+            Login
+          </p>
+        </div>
+      </div>
+      </div>
+   
   );
 };
 

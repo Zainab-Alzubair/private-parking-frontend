@@ -94,22 +94,6 @@ const SlotModal = ({
             </select>
           </div>
           <div className="form-group">
-            <label>Is Cancelled:</label>
-            <select
-              className="form-control"
-              name="is_cancelled"
-              value={editSlot.is_cancelled}
-              onChange={handleFieldChange}
-            >
-              <option value="">Select Option</option>
-              {dropdownOptions.map((option) => (
-                <option key={option.value} value={option.value}>
-                  {option.label}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="form-group">
             <label>Cancellation Policy:</label>
             <input
               type="text"

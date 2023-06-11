@@ -98,13 +98,13 @@ const ManageCustomers = () => {
     <div className="d-flex">
         <SideBar/>
         <div>
-      <h1>Manage Customers</h1>
       <FormControl
         type="text"
         placeholder="Search by name, surname, or email"
         className="mb-4"
         value={searchTerm}
         onChange={handleSearch}
+        style={{ marginTop: '3rem', marginLeft:'0.5rem' }}
       />
       <Table striped bordered hover>
         <thead>
@@ -124,7 +124,7 @@ const ManageCustomers = () => {
               <td>{user.email}</td>
               <td>{user.role}</td>
               <td>
-                <Button variant="primary" size="sm" onClick={() => handleOpenModal(user)}>
+                <Button variant="primary" size="sm" onClick={() => handleOpenModal(user)} style={{ marginRight: '10px' }}>
                   Edit
                 </Button>
                 <Button variant="danger" size="sm" onClick={() => handleDeleteUser(user.id)}>
@@ -142,14 +142,14 @@ const ManageCustomers = () => {
         </Modal.Header>
         <Modal.Body>
           <FormControl
-            type="text"
+            type="name"
             placeholder="Name"
             name="name"
             value={updatedUserData.name}
             onChange={handleInputChange}
           />
           <FormControl
-            type="text"
+            type="name"
             placeholder="Surname"
             name="surname"
             value={updatedUserData.surname}

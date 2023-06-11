@@ -3,7 +3,7 @@ import { Modal, Button, Table } from 'react-bootstrap';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SideBar from '../side-bar/SideBar';
-
+import './table.css'
 const ManageWorkingHour = () => {
   const [showModal, setShowModal] = useState(false);
   const [workingHours, setWorkingHours] = useState([]);
@@ -87,7 +87,8 @@ const ManageWorkingHour = () => {
   const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
   return (
-    <div className="d-flex">
+    <div className="d-flex ">
+     
         <SideBar/>
       <div>
       <Modal show={showModal} onHide={handleCloseModal}>
@@ -137,6 +138,7 @@ const ManageWorkingHour = () => {
           </Button>
         </Modal.Footer>
       </Modal>
+      
       <Table striped bordered hover>
         <thead>
           <tr>

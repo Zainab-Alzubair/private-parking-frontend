@@ -14,7 +14,6 @@ const ManageSlots = () => {
     price: '',
     is_disabled: false,
     is_available: false,
-    is_cancelled: false,
     cancelation_policy: '',
     availability_start_time: '',
     availability_end_time: '',
@@ -59,7 +58,6 @@ const ManageSlots = () => {
       price: '',
       is_disabled: false,
       is_available: false,
-      is_cancelled: false,
       cancelation_policy: '',
       availability_start_time: '',
       availability_end_time: '',
@@ -78,7 +76,6 @@ const ManageSlots = () => {
         price: '',
         is_disabled: false,
         is_available: true,
-        is_cancelled: false,
         cancelation_policy: '',
         availability_start_time: '',
         availability_end_time: '',
@@ -199,7 +196,6 @@ const ManageSlots = () => {
               <th>Price</th>
               <th>Is Disabled</th>
               <th>Is Available</th>
-              <th>Is Cancelled</th>
               <th>Cancellation Policy</th>
               <th>Availability Start Time</th>
               <th>Availability End Time</th>
@@ -214,7 +210,6 @@ const ManageSlots = () => {
                 <td>{slot.price}</td>
                 <td>{slot.is_disabled ? 'Yes' : 'No'}</td>
                 <td>{slot.is_available ? 'Yes' : 'No'}</td>
-                <td>{slot.is_cancelled ? 'Yes' : 'No'}</td>
                 <td>{slot.cancelation_policy}</td>
                 <td>{formatTime(slot.availability_start_time)}</td>
                 <td>{formatTime(slot.availability_end_time)}</td>
@@ -223,6 +218,7 @@ const ManageSlots = () => {
                     variant="primary"
                     onClick={() => handleShowModal(slot)}
                     className="mr-2"
+                    style={{ marginRight: '10px' }}
                   >
                     Edit
                   </Button>

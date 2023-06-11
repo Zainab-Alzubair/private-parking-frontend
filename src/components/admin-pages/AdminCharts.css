@@ -1,0 +1,20 @@
+.admin-charts-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.chart-container {
+  margin: 20px;
+  padding: 20px;
+  background-color: #212529;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+.chart-title {
+  margin-bottom: 10px;
+  color: rgb(255, 255, 255);
+  font-size: 18px;
+  text-align: center;
+}
