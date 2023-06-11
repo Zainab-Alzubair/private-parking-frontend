@@ -10,6 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import ManageWorkingHour from './components/admin-pages/working-hours/ManageWorkingHour';
 import ManageSlots from './components/admin-pages/slots/ManageSlots'
 import ManageCustomers from './components/admin-pages/customers/MangeCustomers';
+import ReservationList from './components/user-dashboard/reservations/ReservationList';
 const App = () => {
   const [authenticated, setAuthenticated] = useState(false);
   const [role, setRole] = useState('');
@@ -61,6 +62,7 @@ const App = () => {
         <Route path="/manage-working-hour" element={<ManageWorkingHour />} />
         <Route path="/manage-slots" element={<ManageSlots />} />
         <Route path="/manage-customers" element={<ManageCustomers />} />
+        <Route path="/reservation-list" element={<ReservationList />} />
         <Route
           exact
           path="/"
