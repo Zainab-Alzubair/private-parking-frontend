@@ -6,11 +6,15 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Reservation = () => {
   const [slots, setSlots] = useState([]);
+  const [filteredSlots, setFilteredSlots] = useState([]);
   const [selectedSlot, setSelectedSlot] = useState(null);
   const [start_time, setStartTime] = useState('');
   const [end_time, setEndTime] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
   const [userId, setUserId] = useState(null);
+  const [carTypeFilter, setCarTypeFilter] = useState('all');
+  const [isDisabledFilter, setIsDisabledFilter] = useState('all');
+  const [timeFilter, setTimeFilter] = useState('all');
 
   // Fetch logged-in user ID
   const fetchLoggedInUserId = () => {
@@ -36,6 +40,7 @@ const Reservation = () => {
       try {
         const response = await axios.get('http://127.0.0.1:3000/api/v1/slots');
         setSlots(response.data.slots);
+        setFilteredSlots(response.data.slots);
       } catch (error) {
         console.error('Error fetching slots:', error);
       }
@@ -44,6 +49,34 @@ const Reservation = () => {
     fetchSlots();
     fetchLoggedInUserId();
   }, []);
+
+  // Apply filters when slots or filter values change
+  useEffect(() => {
+    filterSlots();
+  }, [slots, carTypeFilter, isDisabledFilter, timeFilter]);
+
+  // Filter the slots based on the selected filters
+  const filterSlots = () => {
+    let filtered = slots;
+
+    // Filter by car type
+    if (carTypeFilter !== 'all') {
+      filtered = filtered.filter((slot) => slot.car_type === carTypeFilter);
+    }
+
+    // Filter by is disabled status
+    if (isDisabledFilter !== 'all') {
+      const isDisabled = isDisabledFilter === 'true';
+      filtered = filtered.filter((slot) => slot.is_disabled === isDisabled);
+    }
+
+    // Filter by time availability
+    if (timeFilter !== 'all') {
+      filtered = filtered.filter((slot) => slot.time === timeFilter);
+    }
+
+    setFilteredSlots(filtered);
+  };
 
   // Handle slot selection
   const handleSlotSelect = (slot) => {
@@ -100,8 +133,38 @@ const Reservation = () => {
   return (
     <div>
       <h2>Slots</h2>
+
+      <div className="filters">
+        <div className="filter">
+          <label>Car Type:</label>
+          <select value={carTypeFilter} onChange={(e) => setCarTypeFilter(e.target.value)}>
+            <option value="all">All</option>
+            <option value="Hybrid / Electric">Hybrid / Electric</option>
+            <option value="Sports Car">Sports Car</option>
+            <option value="Truck">HatchTruckback</option>
+            <option value="Van / Minivan">Van / Minivan</option>
+          </select>
+        </div>
+        <div className="filter">
+          <label>Is Disabled:</label>
+          <select value={isDisabledFilter} onChange={(e) => setIsDisabledFilter(e.target.value)}>
+            <option value="all">All</option>
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+          </select>
+        </div>
+        <div className="filter">
+          <label>Time:</label>
+          <select value={timeFilter} onChange={(e) => setTimeFilter(e.target.value)}>
+            <option value="all">All</option>
+            <option value="Morning">Morning</option>
+            <option value="Evening">Evening</option>
+          </select>
+        </div>
+      </div>
+
       <div className="row">
-        {slots.map((slot) => (
+        {filteredSlots.map((slot) => (
           <div className="col-md-4" key={slot.id}>
             <Card>
               <Card.Body>
