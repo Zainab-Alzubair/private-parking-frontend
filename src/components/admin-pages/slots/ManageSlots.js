@@ -3,6 +3,7 @@ import { Button, Table } from 'react-bootstrap';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SlotModal from './SlotModal';
+import SideBar from '../side-bar/SideBar';
 const ManageSlots = () => {
   const [showModal, setShowModal] = useState(false);
   const [slots, setSlots] = useState([]);
@@ -138,7 +139,8 @@ const ManageSlots = () => {
   ];
 
   return (
-    <div>
+    <div className="d-flex">
+        <SideBar/>
       <SlotModal
         showModal={showModal}
         handleCloseModal={handleCloseModal}
