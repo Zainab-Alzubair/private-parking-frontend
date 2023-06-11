@@ -1,0 +1,19 @@
+li {
+  text-decoration: none;
+  list-style: none;
+}
+
+.nav {
+  background-color: blueviolet;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.nav-items {
+  display: flex;
+  color: aliceblue;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 5rem;
+  font-weight: 700;
+}
