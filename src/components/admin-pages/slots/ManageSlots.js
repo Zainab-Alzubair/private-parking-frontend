@@ -33,6 +33,23 @@ const ManageSlots = () => {
     }
   };
 
+  const formatTime = (time) => {
+    if (!time) return '-';
+
+    // Check if time value is in ISO format
+    if (time.includes('T')) {
+      const date = new Date(time);
+      return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    }
+
+    const [hours, minutes] = time.split(':');
+    const date = new Date();
+    date.setHours(Number(hours));
+    date.setMinutes(Number(minutes));
+
+    return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  };
+
   const handleCloseModal = () => {
     setShowModal(false);
     setEditSlot({
@@ -60,7 +77,7 @@ const ManageSlots = () => {
         car_type: '',
         price: '',
         is_disabled: false,
-        is_available: false,
+        is_available: true,
         is_cancelled: false,
         cancelation_policy: '',
         availability_start_time: '',
@@ -72,11 +89,20 @@ const ManageSlots = () => {
   const handleSaveChanges = async () => {
     try {
       let response;
-      if (editSlot.id) {
+      const updatedSlot = { ...editSlot };
+  
+      // Convert availability time values to the desired format
+      if (!updatedSlot.is_available && updatedSlot.time) {
+        const formattedTime = formatTime(updatedSlot.time);
+        updatedSlot.availability_start_time = formattedTime;
+        updatedSlot.availability_end_time = formattedTime;
+      }
+  
+      if (updatedSlot.id) {
         response = await axios.patch(
-          `http://127.0.0.1:3000/api/v1/slots/${editSlot.id}`,
+          `http://127.0.0.1:3000/api/v1/slots/${updatedSlot.id}`,
           {
-            slot: editSlot,
+            slot: updatedSlot,
           },
           {
             headers: {
@@ -88,7 +114,7 @@ const ManageSlots = () => {
         response = await axios.post(
           'http://127.0.0.1:3000/api/v1/slots',
           {
-            slot: editSlot,
+            slot: updatedSlot,
           },
           {
             headers: {
@@ -104,6 +130,7 @@ const ManageSlots = () => {
       console.error('API Error:', error.response);
     }
   };
+  
 
   const handleDeleteSlot = async (id) => {
     try {
@@ -117,14 +144,22 @@ const ManageSlots = () => {
     }
   };
 
-  const handleInputChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    const inputValue = type === 'checkbox' ? checked : value;
-    setEditSlot((prevSlot) => ({
-      ...prevSlot,
-      [name]: inputValue,
-    }));
+  const handleInputChange = (name, value) => {
+    if (name === 'availability_start_time' || name === 'availability_end_time') {
+      const updatedTime = value.substring(0, 5);
+      setEditSlot((prevSlot) => ({
+        ...prevSlot,
+        [name]: updatedTime,
+      }));
+    } else {
+      setEditSlot((prevSlot) => ({
+        ...prevSlot,
+        [name]: value,
+      }));
+    }
   };
+  
+  
 
   const carTypeOptions = [
     'Hybrid / Electric',
@@ -140,7 +175,7 @@ const ManageSlots = () => {
 
   return (
     <div className="d-flex">
-        <SideBar/>
+      <SideBar />
       <SlotModal
         showModal={showModal}
         handleCloseModal={handleCloseModal}
@@ -172,37 +207,34 @@ const ManageSlots = () => {
             </tr>
           </thead>
           <tbody>
-          {slots.map((slot) => (
-  <tr key={slot.id}>
-
-    <td>{slot.time}</td>
-    <td>{slot.car_type}</td>
-    <td>{slot.price}</td>
-    <td>{slot.is_disabled ? 'Yes' : 'No'}</td>
-    <td>{slot.is_available ? 'Yes' : 'No'}</td>
-    <td>{slot.is_cancelled ? 'Yes' : 'No'}</td>
-    <td>{slot.cancelation_policy}</td>
-    <td>{slot.availability_start_time.slice(11, 16)}</td>
-    <td>{slot.availability_end_time.slice(11, 16)}</td>
-    <td>
-    <Button
-  variant="primary"
-  size="sm"
-  onClick={() => handleShowModal(slot)}
->
-  Edit
-</Button>
-      <Button
-        variant="danger"
-        size="sm"
-        onClick={() => handleDeleteSlot(slot.id)}
-      >
-        Delete
-      </Button>
-    </td>
-  </tr>
-))}
-
+            {slots.map((slot) => (
+              <tr key={slot.id}>
+                <td>{slot.time}</td>
+                <td>{slot.car_type}</td>
+                <td>{slot.price}</td>
+                <td>{slot.is_disabled ? 'Yes' : 'No'}</td>
+                <td>{slot.is_available ? 'Yes' : 'No'}</td>
+                <td>{slot.is_cancelled ? 'Yes' : 'No'}</td>
+                <td>{slot.cancelation_policy}</td>
+                <td>{formatTime(slot.availability_start_time)}</td>
+                <td>{formatTime(slot.availability_end_time)}</td>
+                <td>
+                  <Button
+                    variant="primary"
+                    onClick={() => handleShowModal(slot)}
+                    className="mr-2"
+                  >
+                    Edit
+                  </Button>
+                  <Button
+                    variant="danger"
+                    onClick={() => handleDeleteSlot(slot.id)}
+                  >
+                    Delete
+                  </Button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </Table>
       </div>
