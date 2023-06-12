@@ -1,0 +1,70 @@
+.container-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.body-background {
+  background-color: #0b0101 !important;
+  background: url('./../../../public/b.jpg');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  
+}
+
+.body-login-background {
+  background-color: #0b0101 !important;
+}
+.container-title {
+  text-align: center;
+  color: #fff;
+}
+
+.login-btn {
+border: 2px solid #22FFB8;
+width: fit-content;
+padding: .6rem;
+}
+
+.welcome-title{
+  font-size: 36px;
+  padding-bottom: 2rem;
+  font-weight: 700;
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  color: #fff;
+}
+.container-form {
+  width: 300px;
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 5px;
+  border: 1px solid #22FFB8;
+  padding: 10px;
+
+}
+
+input[type="name"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color:  #0056b3;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color:  #2b85e6;
+}
