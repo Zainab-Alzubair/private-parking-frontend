@@ -117,7 +117,7 @@ Clone this repository to your desired folder:
  - mkdir my-folder
  - cd my-folder
  - git clone git@github.com:Zainab-Alzubair/private-parking-frontend.git
- - cd Book-Appointment-Front-End
+ - cd private-parking-frontend
  - npm install
 
 ```
