@@ -16,8 +16,6 @@ const LogoutButton = () => {
       navigate('/login');
     } catch (error) {
       console.error('Logout Error:', error);
-      // Handle error if the logout API request fails
-      // You can choose to navigate to the login page or display an error message
     }
   };
 

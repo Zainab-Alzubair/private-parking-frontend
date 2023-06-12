@@ -43,6 +43,7 @@ const ReservationList = () => {
   return (
     <div>
       <NavBar/>
+      <div className='filter-card'>
       <h2>My Reservations</h2>
       {reservations.length === 0 ? (
         <p>No reservations found</p>
@@ -73,6 +74,7 @@ const ReservationList = () => {
         </Table>
       )}
       <ToastContainer />
+    </div>
     </div>
   );
 };

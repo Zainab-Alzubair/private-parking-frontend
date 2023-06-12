@@ -88,7 +88,6 @@ const ManageWorkingHour = () => {
 
   return (
     <div className="d-flex ">
-     
         <SideBar/>
       <div>
       <Modal show={showModal} onHide={handleCloseModal}>

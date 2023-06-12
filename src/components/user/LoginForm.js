@@ -41,15 +41,12 @@ const LoginForm = () => {
       });
 
       const data = await response.json();
-      console.log('Auth Token:', data.auth_token);
-      console.log('Role:', data.role); // Check the response data in the browser console
-      console.log(data);
       if (response.ok) {
         localStorage.setItem('authToken', data.auth_token);
         localStorage.setItem('role', data.role);
         localStorage.setItem('user_id', data.user_id);
         navigate('/dashboard');
-        toast.success('Login successful'); // Show success toast message
+        toast.success('Login successful');
       } else {
         toast.error('Login failed', {
           position: 'bottom-center',

@@ -5,7 +5,7 @@ function UserDashboard(){
   return(
     <div>
     <NavBar/>
-   <Reservation/>
+    <Reservation/>
     </div>
   )
 }

@@ -8,7 +8,7 @@ function AdminDashboard(){
     <div className="admin-container" style={{ backgroundColor:"black"}}>
     <SideBar/>
     <div className="dashboard-content">
-    <h1 className="admin-title"> Manage your Pravite Parking </h1>
+    <h1 className="admin-title"> Manage your Private Parking </h1>
     <AdminCharts/>
     </div>
     </div>

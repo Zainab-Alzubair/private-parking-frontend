@@ -121,7 +121,6 @@ const Reservation = () => {
     } catch (error) {
       console.error('Reservation creation error:', error);
       // Handle error if the reservation API request fails
-      // You can choose to display an error message or take appropriate action
       if (error.response && error.response.data.error === 'Unprocessable Entity') {
         toast.error('You have a reservation at the same time');
       } else {
@@ -132,13 +131,13 @@ const Reservation = () => {
 
   return (
     <div>
-      <h2>Slots</h2>
-
+      <div className='filter-card'>
+      <h2 className='reservation-title'>Book your Private Parking</h2>
       <div className="filters">
-        <div className="filter">
+        <div className="filter option">
           <label>Car Type:</label>
-          <select value={carTypeFilter} onChange={(e) => setCarTypeFilter(e.target.value)}>
-            <option value="all">All</option>
+          <select className="option" value={carTypeFilter} onChange={(e) => setCarTypeFilter(e.target.value)}>
+            <option className="option" value="all">All</option>
             <option value="Hybrid / Electric">Hybrid / Electric</option>
             <option value="Sports Car">Sports Car</option>
             <option value="Truck">HatchTruckback</option>
@@ -147,7 +146,7 @@ const Reservation = () => {
         </div>
         <div className="filter">
           <label>Is Disabled:</label>
-          <select value={isDisabledFilter} onChange={(e) => setIsDisabledFilter(e.target.value)}>
+          <select className="option" value={isDisabledFilter} onChange={(e) => setIsDisabledFilter(e.target.value)}>
             <option value="all">All</option>
             <option value="true">Yes</option>
             <option value="false">No</option>
@@ -155,17 +154,18 @@ const Reservation = () => {
         </div>
         <div className="filter">
           <label>Time:</label>
-          <select value={timeFilter} onChange={(e) => setTimeFilter(e.target.value)}>
+          <select className="option" value={timeFilter} onChange={(e) => setTimeFilter(e.target.value)}>
             <option value="all">All</option>
             <option value="Morning">Morning</option>
             <option value="Evening">Evening</option>
           </select>
         </div>
       </div>
-      <div className="row">
+      </div>
+      <div className="cards">
         {filteredSlots.map((slot) => (
-          <div className="col-md-4" key={slot.id}>
-            <Card>
+          <div key={slot.id}>
+            <Card className="card">
               <Card.Body>
                 <Card.Title>Time: {slot.time}</Card.Title>
                 <Card.Text>

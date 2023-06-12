@@ -43,7 +43,7 @@ const SignupForm = () => {
         const data = await response.json();
         localStorage.setItem('authToken', data.auth_token);
         navigate('/login');
-        toast.success('Signup successful'); // Show success toast message
+        toast.success('Signup successful');
       } else {
         toast.error('Signup failed', {
           position: 'bottom-center',
@@ -99,7 +99,6 @@ const SignupForm = () => {
         </div>
       </div>
       </div>
-   
   );
 };
 

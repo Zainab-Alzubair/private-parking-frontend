@@ -16,7 +16,7 @@ const Dashboard = () => {
     }
   }, [navigate]);
 
-  return null; // Or you can render a loading spinner or a message
+  return null;
 };
 
 export default Dashboard;
