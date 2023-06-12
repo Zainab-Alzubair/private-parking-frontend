@@ -61,6 +61,7 @@ const AdminCharts = () => {
     <div className="admin-charts-container">
       {userData && (
         <div className="chart-container">
+          <h3>Users</h3>
           <Chart
             options={userData.options}
             series={userData.series}
@@ -71,6 +72,7 @@ const AdminCharts = () => {
       )}
       {slotData && (
         <div className="chart-container">
+              <h3>Slots</h3>
           <Chart
             options={slotData.options}
             series={slotData.series}

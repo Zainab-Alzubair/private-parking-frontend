@@ -78,3 +78,7 @@ label{
   justify-content: space-between;
   align-items: center;
 }
+
+.navbar-brand:hover {
+  color: #04ff00;
+}
