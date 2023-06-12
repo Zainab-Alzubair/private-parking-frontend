@@ -84,8 +84,8 @@
 ## 🚀 Live Demo <a name="live-demo">
 </a>
 
-- [Private Parking (Front-End)](https://Private Parking.netlify.app/)
-- [Private Parking (API)](https://Private Parking.onrender.com/)
+- [Private Parking (Front-End)](coming soon)
+- [Private Parking (API)](coming soon)
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
