@@ -1,7 +1,12 @@
 import React from "react";
+import NavBar from "./user-dashboard/nav-bar/NavBar";
+import Reservation from "./user-dashboard/reservations/Reservation";
 function UserDashboard(){
   return(
-    <>User Dashboard</>
+    <div>
+    <NavBar/>
+    <Reservation/>
+    </div>
   )
 }
 export default UserDashboard

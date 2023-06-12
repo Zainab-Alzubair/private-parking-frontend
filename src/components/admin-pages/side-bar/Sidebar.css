@@ -1,0 +1,47 @@
+.sidebar-container {
+  height: 100vh; 
+  width: 18%;
+  background-color: #212529;
+  padding: 20px; 
+}
+
+.nav-link {
+  color: #212529;
+  text-decoration: none;
+  background-image: linear-gradient(160deg, #0093E9 0%, #8dabaa 100%);
+  margin-top: 3rem;
+  font-weight: 700;
+}
+
+.logout {
+  margin-top: 2rem ;
+}
+
+.nav-link:hover {
+  color: #04ff00;
+}
+
+.admin-container {
+  display: flex;
+
+}
+
+.admin-title {
+  margin: 0 auto;
+}
+
+.dashboard-content {
+  color: rgba(255, 255, 255, 0.952);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  gap: 7rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 800;
+}
+.title {
+
+  margin: 2rem auto;
+}
